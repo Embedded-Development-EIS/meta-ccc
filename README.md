@@ -1,2 +1,8 @@
 # meta-ccc
-BSP layer for the CCC hardware
+
+Bard Support Package layer for the EIS CCC hardware unit.
+
+
+# Contact
+
+E.I.S Electronics
