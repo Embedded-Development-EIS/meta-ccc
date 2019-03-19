@@ -8,7 +8,6 @@ SRCREV = "e4f86703a6a15f9044bf03e08f9330a31b0b1947"
 LINUX_VERSION = "4.9"
 
 inherit kernel
-require recipes-kernel/linux/linux-dtb.inc
 
 S = "${WORKDIR}/git"
 

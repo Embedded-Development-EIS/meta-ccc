@@ -1,6 +1,7 @@
 # The MACHINE environment variable can be used to pick a
 # machine, look in meta-ccc/conf/machine for a list of values.
-# export MACHINE=pick-a-valid-machine-name
+
+export MACHINE=eis-ccc
 
 export BB_ENV_EXTRAWHITE=MACHINE
 TOPDIR=`dirname ${PWD}`
