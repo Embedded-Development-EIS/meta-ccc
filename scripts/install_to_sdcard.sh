@@ -1,4 +1,4 @@
 IMAGE=my-image
-MACHINE=miami-ccc
-DTB=uImage-eis-miami-ccc.dtb
+MACHINE=eis-ccc
+DTB=uImage-eis-ccc.dtb
 source `dirname $0`/install_to_sd_common.sh
