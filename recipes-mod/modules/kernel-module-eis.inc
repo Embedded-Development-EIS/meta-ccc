@@ -11,7 +11,4 @@ S = "${WORKDIR}/git"
 SRCREV = "${AUTOREV}"
 
 GITHUB_EIS_URI ?= "git://github.com/Embedded-Development-EIS"
-SRC_URI = "${GITHUB_EIS_URI}/${PN}"
-
-# Add autoload files
-FILES_${PN} += "/etc/modules-load.d"
+SRC_URI = "${GITHUB_EIS_URI}/${BPN}"
