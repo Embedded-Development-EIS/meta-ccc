@@ -5,7 +5,7 @@ DISTRO_EXTRA_DEPENDS ?= ""
 MACHINE_EXTRA_DEPENDS ?= ""
 DEPENDS += "${DISTRO_EXTRA_DEPENDS} ${MACHINE_EXTRA_DEPENDS}"
 
-IMAGE_FEATURES += "package-management ssh-server-dropbear"
+IMAGE_FEATURES += "package-management"
 
 IMAGE_FSTYPES = "tar.gz ubi"
 
@@ -19,7 +19,6 @@ MY_THINGS = "\
 	kernel-module-gpio \
 	${@bb.utils.contains('VIRTUAL-RUNTIME_dev_manager', 'busybox-mdev','modutils-loadscript', '', d)} \
 	${@bb.utils.contains("IMAGE_FSTYPES", "ubi", "mtd-utils-ubifs" , "", d)} \
-	ethtool \
 	"
 
 # Skip packagegroup-base to reduce the number of packages built. Thus, we need
@@ -28,7 +27,6 @@ IMAGE_INSTALL_MACHINE_EXTRAS ?= "packagegroup-machine-base"
 
 IMAGE_INSTALL = "\
 	packagegroup-core-boot \
-	packagegroup-core-ssh-dropbear \
 	packagegroup-distro-base \
 	${IMAGE_INSTALL_MACHINE_EXTRAS} \
 	${ROOTFS_PKGMANAGE} \
