@@ -121,8 +121,13 @@ if [ ! -z "${FPGA_BOOT_IMAGE}" ]
 then
 	cp ${MEDIA}/rootfs/${FPGA_BOOT_IMAGE} ${MEDIA_BOOT}/fpga.bin
 fi
+
 echo "Copying user application..."
-cp CCCApp.elf ${MEDIA}/rootfs/bin/CCCApp.elf 
+cp /Development/SDK/CCCQ_1_workspace/CCCApp/Debug/CCCApp.elf /bin/CCCApp.elf
+cp /bin/CCCApp.elf ${MEDIA}/rootfs/bin/CCCApp.elf
+sha1sum /bin/CCCApp.elf > ${MEDIA}/rootfs/home/root/uappchksm.txt
+
+ 
 sleep 1
 
 if [ $DO_UNMOUNT -ne 0 ]

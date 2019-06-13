@@ -16,9 +16,9 @@ PROVIDES = "virtual/xilinx-sdk"
 
 # Fill the next two lines for bitstream and hardware export
 #PATH_TO_BITSTREAMS ??= "/tmp/bitstreams"
-PATH_TO_BITSTREAMS ??= "/soumya/vivado/CP3_5/CP3_5.sdk/CCC_HDL_1_wrapper_hw_platform_0"
+PATH_TO_BITSTREAMS ??= "/Development/Vivado/CCCQ_1"
 #PATH_TO_HW_EXPORT ??= "/tmp/SDK_export/SDK/SDK_Export/hw"
-PATH_TO_HW_EXPORT ??= "/soumya/vivado/CP3_5/CP3_5.sdk/CCC_HDL_1_wrapper_hw_platform_0"
+PATH_TO_HW_EXPORT ??= "/Development/Vivado/CCCQ_1"
 
 BOARD_DESIGN_URI = ""
 

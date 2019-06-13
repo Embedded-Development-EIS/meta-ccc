@@ -1,0 +1,68 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Author:            E.I.S Electronics
+# Required-Start:    application service
+# Required-Stop:     application service
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+case "$1" in
+  start)
+    x=0x000A5525
+    y=0x00085686
+    z=0x00000000
+    t=1
+    f=0
+    devmem 0x1F000000 W $x
+    ramread1=`devmem 0x1F000000`
+    echo "At 0x1F000000: value written is $x and value read $ramread1"
+    if [ $ramread1 == $x ] ; then
+	echo "RAM test 1 success"
+	w=$f
+    else
+    	echo "RAM test 1 fail"
+	w=$t
+    fi;
+
+    devmem 0x1F000000 W $y
+    ramread2=`devmem 0x1F000000`
+    echo "At 0x1F000000: value written is $y and value read $ramread2"
+    if [ $ramread2 == $y ] ; then
+	echo "RAM test 2 success"
+	v=$f
+    else
+    	echo "RAM test 2 fail"
+	v=$t
+    fi;
+
+    if [ $w -eq $t -o $v -eq $t ] ; then
+	devmem 0x1F000000 W $z
+	echo "RAM Test failure"
+	exit 1
+    else
+	devmem 0x1F000000 W $z
+	echo "RAM Test successfull"
+    	echo "Verifying Application Checksum...."
+    	if sha1sum -c /home/root/uappchksm.txt ; then
+		echo "Application Checksum OK"
+		nice -n -15 /bin/CCCApp.elf -daemon -drn -sr1 -sr2 -sov -leak
+		echo "Application Started"
+    	else
+    		echo "Application Checksum FAIL"
+  		exit 1
+    	fi;
+    fi;
+    ;;
+  stop)
+    echo "Stopping application service."
+    ;;
+  *)
+    echo "Usage: Service application-manager {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
