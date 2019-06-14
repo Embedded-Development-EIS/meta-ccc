@@ -17,6 +17,7 @@ MY_THINGS = "\
 	kernel-module-pwm0 \
 	kernel-module-adc \
 	kernel-module-gpio \
+	app \
 	${@bb.utils.contains('VIRTUAL-RUNTIME_dev_manager', 'busybox-mdev','modutils-loadscript', '', d)} \
 	${@bb.utils.contains("IMAGE_FSTYPES", "ubi", "mtd-utils-ubifs" , "", d)} \
 	"
