@@ -48,7 +48,7 @@ case "$1" in
     	echo "Verifying Application Checksum...."
     	if sha1sum -c /home/root/uappchksm.txt ; then
 		echo "Application Checksum OK"
-		nice -n -15 /bin/CCCApp.elf -daemon -drn -sr1 -sr2 -sov -leak
+		nice -n -15 /bin/CCCApp.elf -daemon
 		echo "Application Started"
     	else
     		echo "Application Checksum FAIL"
